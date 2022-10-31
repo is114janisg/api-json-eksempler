@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fotball</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+              <th>Dato</th>
+              <th>Hjemmelaget</th>
+              <th>Bortelaget</th>
+              <th>Resultat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2022-04-02</td>
+                <td>HamKam</td>
+                <td>Lillestrom</td>
+                <td>2:0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let mineData = null;
+        let urlFotballData = "https://app.sportdataapi.com/api/v1/soccer/matches?apikey=956754d0-5901-11ed-94d2-df7e4df129aa&season_id=2933&date_from=2020-09-19";
+        fetch(urlFotballData)
+            .then((response) => response.json())
+            .then((data) => {
+                mineData = data;
+                let dato = mineData.data[0].match_start;
+                let table = document.getElementsByTagName('table');
+                let tbody = table[0].children[1];
+                tbody.children[0].children[0].innerText = mineData.data[0].match_start;
+             });
+
+        
+        
+
+    </script>
+</body>
+</html>
